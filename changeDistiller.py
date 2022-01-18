@@ -59,7 +59,7 @@ if __name__ == "__main__":
                 hashB = pathB.get_commit_from_tag(tag.name).hash
                 pathA.checkout(hashA)
                 pathB.checkout(hashB)
-                runJar(pathA,pathB,str(hashA),str(tag.tag))
+                runJar(pathA,pathB,str(hashA),str(hashB))
                 commit_A = tag
     else:
         with open(args.commits, 'r') as read_obj:
