@@ -44,25 +44,25 @@ if __name__ == "__main__":
     pathB = pydriller.Git(args.pathB)
     repo = git.Repo(args.pathA)
     tags = repo.tags
-    with open(args.commits, 'r') as read_obj:
-        csv_reader = reader(read_obj)
-        i = 0
-        commit_A = ''
-        commit_B = ''
-        if(args.mode == 'tag'):
-            for tag in tags:
-                if(i ==0):
-                    commit_A = tag
-                    i +=1
-                else:
-                 pathA.checkout(commit_A.tag)
-                 pathB.checkout(tag.tag)
-                 runJar(pathA,pathB,str(commit_A.tag),str(tag.tag))
-                 commit_A = tag
-        else:
-            for row in csv_reader:
-                pathA.checkout(row[0])
-                pathB.checkout(row[1])
-                runJar(pathA,pathB,row[0],row[1])
    
- 
+    i = 0
+    commit_A = ''
+    commit_B = ''
+    if(args.mode == 'tag'):
+        for tag in tags:
+            if(i ==0):
+                commit_A = tag
+                i +=1
+            else:
+                pathA.checkout(commit_A.tag)
+                pathB.checkout(tag.tag)
+                runJar(pathA,pathB,str(commit_A.tag),str(tag.tag))
+                commit_A = tag
+    else:
+        with open(args.commits, 'r') as read_obj:
+            csv_reader = reader(read_obj)
+            for row in csv_reader:
+             pathA.checkout(row[0])
+             pathB.checkout(row[1])
+             runJar(pathA,pathB,row[0],row[1])
+
