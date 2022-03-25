@@ -10,3 +10,5 @@ python3 changeDistiller.py --pathA --pathB --commits --projectName --absolutePat
  --projectName - name of the project
  --absolutePath - absolute path of the main folder of the script 
  --mode - if tag, the script will compare all commits with tag and ignore the csv file
+Example:
+nohup python3 changeDistiller.py --pathA "/mnt/sda4/projects-smells/results/changeDistiller/projectA/jgit/" --pathB "/mnt/sda4/projects-smells/results/changeDistiller/projectB/jgit/"  --commits commits.txt --projectName "jgit" --absolutePath "/mnt/sda4/projects-smells/results/changeDistiller/"  --mode "tag" &
